@@ -1,105 +1,102 @@
 # 🎙️ Speech Emotion Recognition
 
-An end-to-end Speech Emotion Recognition (SER) system built with Python and machine learning using the RAVDESS emotional speech dataset.
+> **An end-to-end Speech Emotion Recognition (SER) system built with Python, Machine Learning, and Streamlit using the RAVDESS emotional speech dataset.**
 
-The project extracts advanced acoustic features from speech, performs actor-independent evaluation, compares multiple machine learning models, applies feature selection and hyperparameter optimization, and provides a modern Streamlit web interface for real-time audio emotion prediction.
+This project develops a complete speech emotion recognition pipeline — from raw audio preprocessing and advanced acoustic feature extraction to actor-independent evaluation, model comparison, feature selection, hyperparameter optimization, and an interactive browser-based prediction interface.
 
----
-
-## 🚀 Project Highlights
-
-- Speech emotion recognition from `.wav` audio files
-- RAVDESS dataset with 1,440 audio samples
-- 8 emotion classes
-- Actor-independent train/test split
-- Advanced audio feature extraction
-- MFCC and Delta-MFCC features
-- Chroma features
-- Zero Crossing Rate
-- RMS Energy
-- Spectral Centroid
-- Spectral Bandwidth
-- Spectral Rolloff
-- Feature selection using SelectKBest
-- SVM hyperparameter optimization
-- Actor-aware cross-validation
-- Confusion matrix and classification reports
-- Saved trained ML model
-- Streamlit browser-based interface
+The system can analyze `.wav` speech recordings and predict one of **8 different emotional states** using a trained machine learning pipeline.
 
 ---
 
-## 🎭 Emotion Classes
+## ✨ Project Highlights
 
-The system recognizes the following emotions:
+- 🎙️ Speech emotion recognition from `.wav` audio
+- 🎭 **8 emotion classes**
+- 🎧 **1,440 RAVDESS audio samples**
+- 👥 Actor-independent train/test evaluation
+- 🔊 Advanced acoustic feature extraction
+- 🧠 MFCC & Delta-MFCC features
+- 🎵 Chroma features
+- 📈 Spectral audio features
+- 🔎 SelectKBest feature selection
+- ⚙️ SVM hyperparameter optimization
+- 🧪 Actor-aware cross-validation
+- 📊 Confusion matrix & classification reports
+- 💾 Saved trained ML models
+- 🌐 Modern Streamlit web application
+- 🚀 Real-time audio emotion prediction
 
-1. Angry
-2. Calm
-3. Disgust
-4. Fearful
-5. Happy
-6. Neutral
-7. Sad
-8. Surprised
+---
+
+## 🎭 Supported Emotions
+
+The system recognizes **8 emotional categories**:
+
+| Emotion | Description |
+|---|---|
+| 😠 Angry | Anger / frustration |
+| 😌 Calm | Calm / relaxed speech |
+| 🤢 Disgust | Disgusted emotional state |
+| 😨 Fearful | Fear / anxiety |
+| 😊 Happy | Happiness / positive emotion |
+| 😐 Neutral | Neutral emotional state |
+| 😢 Sad | Sadness / low-energy emotion |
+| 😲 Surprised | Surprise / unexpected reaction |
 
 ---
 
 ## 📊 Dataset
 
-This project uses the RAVDESS (Ryerson Audio-Visual Database of Emotional Speech and Song) speech dataset.
+This project uses the **RAVDESS (Ryerson Audio-Visual Database of Emotional Speech and Song)** speech dataset.
 
-Dataset characteristics used in this project:
+### Dataset Configuration
 
-- 1,440 audio samples
-- 24 actors
-- 8 emotion classes
-- WAV audio format
+- **1,440 audio samples**
+- **24 actors**
+- **8 emotion classes**
+- **WAV audio format**
 
-To reduce actor leakage, the dataset was divided by actor rather than randomly splitting individual audio files.
+To prevent **actor leakage**, the dataset was divided by actor rather than randomly splitting individual audio files.
 
-### Training Set
+### 🏋️ Training Set
 
-Actors:
+**Actors:** `Actor_01` – `Actor_19`
 
-`Actor_01` – `Actor_19`
+**Samples:** `1,140`
 
-Samples:
+### 🧪 Test Set
 
-`1,140`
+**Actors:** `Actor_20` – `Actor_24`
 
-### Test Set
+**Samples:** `300`
 
-Actors:
+> ✅ **No actors are shared between the training and testing sets.**
 
-`Actor_20` – `Actor_24`
-
-Samples:
-
-`300`
-
-No actors are shared between the training and testing sets.
+This provides a more realistic evaluation of how the model performs on **unseen speakers**.
 
 ---
 
-## 🧠 Feature Extraction
+## 🎧 Audio Feature Extraction
 
-The audio processing pipeline extracts multiple acoustic characteristics.
+The project extracts a rich set of acoustic features from every audio recording.
 
-### MFCC
+### 🧠 MFCC
 
-40 MFCC coefficients are extracted along with their mean and standard deviation.
+**40 MFCC coefficients** are extracted along with their statistical representations.
 
-### Delta MFCC
+MFCCs capture important characteristics of the speech spectrum and are widely used in speech-related machine learning tasks.
 
-First-order temporal changes in MFCC features are calculated.
+### 📈 Delta MFCC
 
-### Chroma
+First-order temporal changes in MFCC features are calculated to capture how speech characteristics evolve over time.
 
-12 chroma features are extracted to capture pitch-class information.
+### 🎵 Chroma Features
 
-### Spectral Features
+**12 chroma features** are extracted to represent pitch-class information.
 
-The system also extracts:
+### 🔊 Spectral Features
+
+Additional acoustic characteristics include:
 
 - Zero Crossing Rate
 - RMS Energy
@@ -107,56 +104,77 @@ The system also extracts:
 - Spectral Bandwidth
 - Spectral Rolloff
 
-The final feature representation contains 307 numerical audio features.
+### 📦 Final Feature Representation
+
+The final processed dataset contains:
+
+**307 numerical audio features per sample.**
 
 ---
 
 ## 🤖 Machine Learning Models
 
-Three baseline models were evaluated:
+Three baseline machine learning models were evaluated:
 
 | Model | Accuracy | Weighted F1 |
 |---|---:|---:|
-| Random Forest | 49.0% | 45.1% |
-| SVM | 49.0% | 48.9% |
-| MLP Neural Network | 46.7% | 46.6% |
+| 🌲 Random Forest | 49.0% | 45.1% |
+| ⚡ SVM | 49.0% | 48.9% |
+| 🧠 MLP Neural Network | 46.7% | 46.6% |
 
-SVM provided the strongest baseline performance.
+### 🏆 Best Baseline
+
+**Support Vector Machine (SVM)** provided the strongest baseline performance based on weighted F1 score.
 
 ---
 
 ## 🔎 Feature Selection
 
-Feature selection was performed using `SelectKBest` with ANOVA F-test scoring.
+Feature selection was performed using:
 
-Different feature subset sizes were evaluated.
+**SelectKBest + ANOVA F-test**
 
-The best subset contained:
+Multiple feature subset sizes were evaluated:
+
+- 50 features
+- 100 features
+- 150 features
+- 200 features
+- 250 features
+- 300 features
+
+### 🏆 Best Feature Subset
+
+The best-performing configuration selected:
 
 **100 features**
 
-Performance:
+Performance on the held-out test set:
 
-- Accuracy: **52.0%**
-- Weighted Precision: **54.0%**
-- Weighted Recall: **52.0%**
-- Weighted F1: **51.4%**
+| Metric | Score |
+|---|---:|
+| Accuracy | **52.0%** |
+| Weighted Precision | **54.0%** |
+| Weighted Recall | **52.0%** |
+| Weighted F1 | **51.4%** |
+
+Feature selection improved the weighted F1 score compared with the original SVM baseline.
 
 ---
 
-## ⚙️ Advanced Model
+## ⚙️ Advanced Model Optimization
 
-The final optimized pipeline combines:
-
-1. StandardScaler
-2. SelectKBest
-3. RBF SVM
-
-Best parameters:
+The optimized emotion recognition pipeline combines:
 
 ```text
-Number of selected features: 100
-SVM C: 3
-Kernel: RBF
-Gamma: scale
-Class weight: None
+Audio
+   ↓
+Feature Extraction
+   ↓
+StandardScaler
+   ↓
+SelectKBest
+   ↓
+RBF SVM
+   ↓
+Emotion Prediction
