@@ -1,17 +1,28 @@
-venv/
+# Python
 __pycache__/
-*.pyc
-.ipynb_checkpoints/
+*.py[cod]
+*.pyo
 
-# Dataset
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Streamlit / local environment
+.streamlit/
+.env
+
+# Streamlit agent skills - environment specific
+.agents/
+.claude/
+
+# Large RAVDESS dataset
 data/Audio_Speech_Actors_01-24/
-data/*.zip
+data/Audio_Speech_Actors_01-24.zip
 
-# Generated model files
-models/*.joblib
+# Temporary / backup files
+appbackup.txt
 
-# Generated images
-*.png
-
-# Temporary files
-*.tmp
+# OS files
+.DS_Store
+Thumbs.db

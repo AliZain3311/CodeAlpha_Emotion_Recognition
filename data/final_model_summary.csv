@@ -1,0 +1,2 @@
+CV_F1,Test_Accuracy,Test_Precision,Test_Recall,Test_F1,Best_Params
+0.497691020412363,0.49333333333333335,0.5170495955769073,0.49333333333333335,0.49280217405328425,"{'selector__k': 150, 'svm__C': 3, 'svm__class_weight': None, 'svm__gamma': 'scale'}"

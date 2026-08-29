@@ -1,0 +1,2 @@
+Model,CV Weighted F1,Test Accuracy,Test Weighted Precision,Test Weighted Recall,Test Weighted F1,Test Macro F1
+Advanced Actor-Aware SVM,0.5020344956103869,0.51,0.5132346181783541,0.51,0.5028630800558244,0.4831528875523353
